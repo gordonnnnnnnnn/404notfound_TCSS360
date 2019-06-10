@@ -9,7 +9,7 @@ import java.util.Scanner;
 import javax.swing.JFileChooser;
 
 /**
- * Class for saving and loading information
+ * Class for model part of the MVC application
  * @author Ken Gil Romero
  * @version Spring 19
  */
@@ -96,14 +96,14 @@ public class Model {
 	private String myUserEmailAddr;
 	
 	/** The file chooser for opening and saving an image. */
-	private JFileChooser myJFileChooser;
+	private final JFileChooser myJFileChooser;
 	
 		
 	/**
 	 * Constructor of  the DIYFileManager
 	 * @author Ken Gil Romero
 	 */
-	public Model(String theFirstName, String theEmailAddr) {
+	public Model(final String theFirstName, final String theEmailAddr) {
 		myProjects= new ProjectList();
 		myUserFirstName = theFirstName;
 		myUserEmailAddr = theEmailAddr;
@@ -118,8 +118,8 @@ public class Model {
 	}
 	
 	/**
-	 * 
-	 * @return
+	 * @return the file chooser of the model
+	 * @author Ken Gil Romero
 	 */
 	public JFileChooser getFileChooser() {
 		return myJFileChooser;
@@ -137,7 +137,7 @@ public class Model {
 	 * @param theProject to be added to the list of projects
 	 * @author Ken Gil Romero
 	 */
-	public void addProject(Project theProject) {
+	public void addProject(final Project theProject) {
 		myProjects.addProject(theProject);
 	}
 	
@@ -248,7 +248,7 @@ public class Model {
      * @throws IOException the exception thrown.
      * @author Ken Gil Romero
      */
-    private void checkHeader(Scanner theScan, String theHeader) throws IOException {
+    private void checkHeader(final Scanner theScan, final String theHeader) throws IOException {
     	String scan1 = theScan.next();
     	if(!scan1.equals(theHeader.trim())) {	
     		closeScanThrowIOEx(theScan);
@@ -286,8 +286,8 @@ public class Model {
     }  
 
     /**
-     * 
-     * @return
+     * @return the project list
+     * @author Ken Gil Romero
      */
     public ProjectList getProjectList() {
     	return myProjects;

@@ -27,23 +27,23 @@ public class ProjectPanel extends JPanel {
 	/**
 	 * edit button.
 	 */
-	private JButton myEdit;
+	private final JButton myEdit;
 	/**
 	 * delete button.
 	 */
-	private JButton myDelete;
+	private final JButton myDelete;
 
 	/**
 	 * right panel.
 	 */
-	private JPanel myRightPanel;
+	private final JPanel myRightPanel;
 	/**
 	 * project.
 	 * @param theProject
 	 * @author Zhe Li
 	 * @author Ken Gil Romero
 	 */
-	public ProjectPanel(Project theProject, final Controller theController) {
+	public ProjectPanel(final Project theProject, final Controller theController) {
 		//super();
 		
 		//setup layout.

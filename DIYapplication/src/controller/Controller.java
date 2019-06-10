@@ -8,7 +8,7 @@ import view.*;
 
 /**
  * 
- * @author Owner
+ * @author 
  */
 public class Controller {
 
@@ -59,11 +59,16 @@ public class Controller {
 	 * button is clicked.
 	 * 
 	 * @author Gordon McCreary
-	 * @author Ken Gil Romero
 	 * @param theProject The project that was created.
 	 */
 	public void addCreatedProject(final Project theProject) {
 		myModel.addProject(theProject);
+	}
+	
+	/**
+	 * Sets the save flag for prompting user to save to false
+	 */
+	public void setSaveFlagFalse() {
 		myView.setSaveFlag(false);
 	}
 
@@ -76,7 +81,6 @@ public class Controller {
 	 */
 	public void getDescription(final Project theProject) {
 		myView.getDescriptionPanel().displayDescription(theProject);
-		// myView.setSaveFlag(false);
 	}
 
 	/**

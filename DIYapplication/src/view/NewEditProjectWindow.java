@@ -382,6 +382,7 @@ public class NewEditProjectWindow {
 	 * Adds the submit JButton to the main JPanel.
 	 * 
 	 * @author Gordon McCreary
+	 * @author Ken Gil Romero
 	 * @param thePanel The main JPanel.
 	 */
 	private void addSubmit(final JPanel thePanel) {
@@ -410,6 +411,7 @@ public class NewEditProjectWindow {
 					if (myNewFlag) {
 						myController.addCreatedProject(myProject);
 					}
+					myController.setSaveFlagFalse();
 					myController.refreshProjects();
 					myController.getDescription(myProject);
 					myApp.setEnabled(true);
@@ -418,7 +420,7 @@ public class NewEditProjectWindow {
 		});
 		
 		// Panel layout.
-		JPanel Submit = new JPanel(new BorderLayout());
+		final JPanel Submit = new JPanel(new BorderLayout());
 		Submit.add(mySubmitButton, BorderLayout.EAST);
 		Submit.setBorder(BorderFactory.createEmptyBorder(5, 0, 25, 0));
 		Submit.setPreferredSize(new Dimension(200, 50));

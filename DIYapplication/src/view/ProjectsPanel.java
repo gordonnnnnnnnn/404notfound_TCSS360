@@ -43,7 +43,9 @@ public class ProjectsPanel extends JPanel {
 	 */
 	private final JPanel myProjectsPanel;
 	
-    /** The model for reference. */
+    /** 
+     * The model for reference. 
+     */
     private final Controller myController;
 	
     /**
@@ -56,7 +58,7 @@ public class ProjectsPanel extends JPanel {
 		final JPanel LeftPanel = new JPanel(new BorderLayout());
 		myController = theController;
 		
-        JButton add = new JButton("  +  ");
+        final JButton add = new JButton("  +  ");
         add.setBackground(Color.WHITE);
         add.setPreferredSize(ADDBTNDIMENSION);    
         add.addActionListener(theEvent -> myController.createNewProject());
@@ -80,10 +82,10 @@ public class ProjectsPanel extends JPanel {
 	 */
 	public void buildProjectPanels(final ProjectList theProjectsList) {
 		myProjectsPanel.removeAll();
-		for (int i = 0; i < theProjectsList.getProjectList().size(); i++) {
+		for (int i = 0; i < theProjectsList.getProjectList().size(); i++) { //TODO advance for loop
 			myProjectsPanel.add(new ProjectPanel(theProjectsList.getProjectList().get(i), myController));
 		}
-		int temp = myController.getProjectsSize() * PROJPANELSIZE + 5;
+		final int temp = myController.getProjectsSize() * PROJPANELSIZE + 5;
 		myProjectsPanel.setPreferredSize(new Dimension(myProjectsPanel.getWidth(), temp));
 		myProjectsPanel.revalidate();
 		myProjectsPanel.repaint();

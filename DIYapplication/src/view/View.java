@@ -52,10 +52,6 @@ public class View extends JFrame {
 	/** The model for reference. */
 	private final Controller myController;
 
-	/**
-	 * Exit prompt window adapter
-	 */
-	private WindowAdapter myExitWindowAdapter;
 
 	/**
 	 * Boolean that is changed if a project was recently saved.
@@ -83,6 +79,7 @@ public class View extends JFrame {
 
 		myController = theController;
 		setLayout(new BorderLayout());
+
 		createAndShowGUI();
 		mySaveFlag = true;
 	}
@@ -103,7 +100,7 @@ public class View extends JFrame {
 	 */
 	private void showClosingDialog() {
 		if (!mySaveFlag) {
-			int PromptResult = JOptionPane.showConfirmDialog((Component) null, "Do you want to save before exiting?",
+			final int PromptResult = JOptionPane.showConfirmDialog((Component) null, "Do you want to save before exiting?",
 					"Alert", JOptionPane.YES_NO_CANCEL_OPTION);
 			if (PromptResult == JOptionPane.YES_OPTION) {
 				if (myController.saveProjects()) {
@@ -126,13 +123,12 @@ public class View extends JFrame {
 		setUpComponents();
 
 		this.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
-		myExitWindowAdapter = new WindowAdapter() {
+		addWindowListener(new WindowAdapter() {
 			@Override
 			public void windowClosing(WindowEvent we) {
 				showClosingDialog();
 			}
-		};
-		addWindowListener(myExitWindowAdapter);
+		});
 		pack();
 		setLocationRelativeTo(null);
 		setResizable(false);
@@ -144,7 +140,7 @@ public class View extends JFrame {
 	 * 
 	 * @author
 	 * @author Ken Gil Romero
-	 * @author
+	 * @author Tammy
 	 */
 	private void setUpComponents() {
 		setJMenuBar(createMenuBar());
@@ -177,7 +173,6 @@ public class View extends JFrame {
 	}
 
 	/**
-	 * 
 	 * @return
 	 */
 	public JMenuBar createMenuBar() {
@@ -207,7 +202,7 @@ public class View extends JFrame {
 			if (mySaveFlag) {
 				myController.openProjects();
 			} else {
-				int PromptResult = JOptionPane.showConfirmDialog((Component) null,
+				final int PromptResult = JOptionPane.showConfirmDialog((Component) null,
 						"Do you want to save before loading?", "Alert", JOptionPane.YES_NO_CANCEL_OPTION);
 				if (PromptResult == JOptionPane.YES_OPTION) {
 					if (myController.saveProjects()) {
